@@ -1,12 +1,15 @@
-name: PR Test and Merge
+name: CI Process
 
 on:
   pull_request:
     branches:
-      - main
+      - main  # Запускать при создании PR в ветку main
+  push:
+    branches:
+      - main  # Запускать при пушах в ветку main (например, для мержей)
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,16 +41,20 @@ jobs:
           pytest  # Запуск тестов с помощью pytest
 
   merge:
-    if: success()
     runs-on: ubuntu-latest
-    needs: test
-
+    needs: lint
+    if: github.event_name == 'pull_request' && needs.lint.result == 'success'  # Проверка на успешное завершение необходимости
+  
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get install -y gh
 
       - name: Merge pull request
         run: |
           gh pr merge ${{ github.event.pull_request.number }} --merge
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Использование встроенного токена доступа
