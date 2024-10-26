@@ -19,7 +19,6 @@ def test_multiply():
 def test_divide():
     assert divide(6, 2) == 3
     assert divide(-1, 1) == -1
-    assert divide(10, 0)  # Это должно вызвать исключение
 
 # Проверяем, что ValueError выбрасывается при делении на ноль
 def test_divide_by_zero():
