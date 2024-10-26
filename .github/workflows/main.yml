@@ -20,7 +20,7 @@ jobs:
 
       - name: Install required packages
         run: |
-          pip install pylint  # Установка линтера, если планируем линтить текстовые файлы
+          pip install pylint pytest  # Установка линтера и pytest для тестирования
 
       - name: Lint text files
         run: |
@@ -32,3 +32,7 @@ jobs:
               exit 1  # Ошибка, если текстовый файл пустой
             fi
           done
+
+      - name: Run tests
+        run: |
+          pytest  # Запуск тестов с помощью pytest
