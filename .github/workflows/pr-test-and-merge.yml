@@ -20,7 +20,7 @@ jobs:
 
       - name: Install required packages
         run: |
-          pip install pylint pytest  # Установка линтера и pytest для тестирования
+          pip install pylint pytest
 
       - name: Lint text files
         run: |
@@ -29,18 +29,43 @@ jobs:
               echo "$file is not empty"
             else
               echo "$file is empty"
-              exit 1  # Ошибка, если текстовый файл пустой
+              exit 1
             fi
           done
 
       - name: Run tests
         run: |
-          pytest  # Запуск тестов с помощью pytest
+          pytest
+
+  check-approval:
+    if: success()
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup GitHub CLI
+        run: |
+          echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
+
+      - name: Check PR approval
+        id: check_approval
+        run: |
+          APPROVALS=$(gh pr view ${{ github.event.pull_request.number }} --json reviews --jq '.reviews | map(select(.state == "APPROVED")) | length')
+          echo "Number of approvals: $APPROVALS"
+          if [ $APPROVALS -lt 1 ]; then  # Убедитесь, что количество одобрений соответствует вашим требованиям
+            echo "Not enough approvals"
+            exit 1
+          fi
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
 
   merge:
     if: success()
     runs-on: ubuntu-latest
-    needs: test
+    needs: check-approval
 
     steps:
       - name: Checkout code
