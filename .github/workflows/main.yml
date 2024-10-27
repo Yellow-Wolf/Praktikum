@@ -1,4 +1,4 @@
-name: CI Process
+name: CI Process # имитация изменения для проверки гипотезы
 
 on:
   push:
