@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # Дает право на запись
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
@@ -32,4 +35,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_build/html
-          publish_branch: gh-pages  # Дополнительная настройка для указания ветки
+          publish_branch: gh-pages  # Убедитесь, что эта ветка существует или будет создана
