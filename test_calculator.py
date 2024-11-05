@@ -1,5 +1,5 @@
 import pytest
-from calculator import add, subtract, multiply, divide  # Импортируем функции
+from calculator import add, subtract, multiply, divide, power, factorial  # Импортируем функции
 
 def test_add():
     assert add(1, 2) == 3
@@ -24,3 +24,16 @@ def test_divide():
 def test_divide_by_zero():
     with pytest.raises(ValueError):
         divide(10, 0)
+
+def test_power():
+    assert power(2, 3) == 8
+    assert power(5, 0) == 1
+    assert power(-3, 3) == -27
+
+def test_factorial():
+    assert factorial(5) == 120
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+
+    with pytest.raises(ValueError):
+        factorial(-1)  # Факториал отрицательного числа должен вызывать ошибку
