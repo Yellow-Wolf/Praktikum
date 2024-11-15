@@ -1,0 +1,36 @@
+name: Track Changes
+
+on:
+  push:
+    branches:
+      - main  # замените на вашу основную ветку, если необходимо
+
+jobs:
+  log_changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate changes log
+        run: |
+          echo "<html>" > changes.html
+          echo "<head><title>Change Log</title></head>" >> changes.html
+          echo "<body><h1>Change Log</h1>" >> changes.html
+
+          # Получаем изменения
+          git log -1 --pretty=format:"<h2>%h - %an, %ar</h2><pre>%b</pre><hr>" >> changes.html
+
+          echo "</body></html>" >> changes.html
+
+          # Выводим на экран изменения
+          cat changes.html
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add changes.html
+          git commit -m "Update change log" || echo "No changes to commit"
+          git push
