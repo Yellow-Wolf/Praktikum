@@ -2,7 +2,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS =
 SPHINXBUILD = sphinx-build
-SPHINXPROJ = YourProjectName
+SPHINXPROJ = Praktikum
 SOURCEDIR = .
 BUILDDIR = _build
 # Put it first so that "make" without arguments is like "make help".
