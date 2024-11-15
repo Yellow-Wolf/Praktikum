@@ -3,8 +3,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'YourProjectName'
-copyright = '2023, YourName'
+project = 'Praktikum'
+copyright = '2024, Сергей'
 author = 'YourName'
 release = '1.0.0'
 
