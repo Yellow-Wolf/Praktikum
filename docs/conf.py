@@ -4,8 +4,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Praktikum'
-copyright = '2024, Сергей'
-author = 'YourName'
+copyright = '2024, SkyNet'
+author = 'Сергей'
 release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
