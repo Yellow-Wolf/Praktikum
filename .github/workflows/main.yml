@@ -34,7 +34,7 @@ jobs:
           
       - name: Lint text files
         run: |
-          for file in src/*.txt; do
+          for file in *.txt; do
             if [ -s "$file" ]; then
               echo "$file is not empty"
             else
