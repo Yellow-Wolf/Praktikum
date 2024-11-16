@@ -41,7 +41,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest src
+          pytest
 
   auto-merge:
     runs-on: ubuntu-latest
