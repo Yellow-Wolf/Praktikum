@@ -1,5 +1,5 @@
 import pytest
-from calculator import add, subtract, multiply, divide, power, factorial
+from src.calculator import add, subtract, multiply, divide, power, factorial
 
 def test_add():
     """Проверяет сумму."""
