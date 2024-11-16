@@ -28,9 +28,13 @@ jobs:
         run: |
           pip install pylint pytest
 
+      - name: Lint Python files
+        run: |
+          pylint src/*.py
+          
       - name: Lint text files
         run: |
-          for file in *.txt; do
+          for file in src/*.txt; do
             if [ -s "$file" ]; then
               echo "$file is not empty"
             else
@@ -41,7 +45,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          pytest src/testCalculator.py
 
   auto-merge:
     runs-on: ubuntu-latest
