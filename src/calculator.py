@@ -1,27 +1,26 @@
-def add(x, y):
-    """Возвращает сумму двух чисел. *Успешное обновление документации*"""
+def add(x: float, y: float) -> float:
+    """Возвращает сумму двух чисел."""
     return x + y
-#изменения в коде
-# еще изменения/ еще дополнительные изменения для проверки автогенерации документации
-def subtract(x, y):
+
+def subtract(x: float, y: float) -> float:
     """Возвращает разность двух чисел."""
     return x - y
 
-def multiply(x, y):
+def multiply(x: float, y: float) -> float:
     """Возвращает произведение двух чисел."""
     return x * y
 
-def divide(x, y):
+def divide(x: float, y: float) -> float:
     """Возвращает частное двух чисел."""
     if y == 0:
         raise ValueError("Деление на ноль недопустимо!")
     return x / y
 
-def power(n, m):
+def power(n: float, m: float) -> float:
     """Возвращает n в степени m."""
     return n ** m
 
-def factorial(n):
+def factorial(n: int) -> int:
     """Возвращает факториал числа n."""
     if n < 0:
         raise ValueError("Факториал не определён для отрицательных чисел.")
