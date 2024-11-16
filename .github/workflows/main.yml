@@ -1,4 +1,4 @@
-CI Process
+name: CI Process
 
 on:
   push:
