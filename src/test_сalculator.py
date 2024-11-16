@@ -1,3 +1,6 @@
+"""
+Модуль для тестирования калькулятора.
+"""
 import pytest
 from calculator import add, subtract, multiply, divide, power, factorial
 
