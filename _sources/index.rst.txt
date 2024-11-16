@@ -1,18 +1,21 @@
 .. Praktikum documentation master file, created by
-        sphinx-quickstart on %(date)s.
-        You can adapt this file completely to your liking, but it should at least
-        contain the root `toctree` directive.
+   sphinx-quickstart on Sat Nov 16 19:19:23 2024.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-     Welcome to YourProjectName's documentation!
-     ============================================
+Praktikum documentation
+=======================
 
-     .. toctree::
-        :maxdepth: 2
-        :caption: Contents:
+Add your content using ``reStructuredText`` syntax. See the
+`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+documentation for details.
 
-     Indices and tables
-     ==================
 
-     * :ref:`genindex`
-     * :ref:`modindex`
-     * :ref:`search`
+.. toctree::
+   :maxdepth: 2
+   
+   modules
+   testСalculator
+
+
+
